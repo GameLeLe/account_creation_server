@@ -26,17 +26,20 @@ go build account_creation_server.go
 
 #####4，启动程序提供http接口服务
 
-启动程序并传入相应的参数
+启动程序并传入相应的参数  
+
 `
 ./account_creation_server -pn walletservice.u -pk xxxxxxxx -l 5 -p 33000
 `
+
 参数解释：  
 -pn 用于创建账户的账户名前缀，实际发送交易时会在最后加上一个1～9的数字  
 -pk 发送交易的账户私钥，这里认为pn传入的账户使用同一私钥。  
 -l 每个ip创建账户的数量限制。  
 -p 指定的rpc节点端口，此处使用端口区分，主网与测试网。使用的是一个同时提供主网和测试网的rpc节点
 
-调试完毕可以做为后台服务启动
+调试完毕可以做为后台服务启动  
+
 `
 nohup ./account_creation_server -pn walletservice.u -pk xxxxxxxx -l 5 -p 33000 &
 `
@@ -48,12 +51,13 @@ nohup ./account_creation_server -pn walletservice.u -pk xxxxxxxx -l 5 -p 33000 &
 `
 http://localhost:12345/wallet_account_creation?accname=arg1&pubkey=0xXXXXXXXXX&deviceid=deviceid
 `
+
 参数：  
 accname 新建账户名称  
 pubkey 新建账户公钥  
 deviceid 设备id字串  
 
-成功则返回交易hash
+成功则返回交易hash  
 `
 {"code":200,"msg":"0xXXXXXXXXXXXXXX"}
 `
